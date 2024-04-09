@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appreciation art plastique</title>
+</head>
+<style>
+@font-face {
+    font-family: main;
+    src: url(font/TiltNeon-Regular-VariableFont_XROT\,YROT.ttf);
+}
+
+body{
+    background-color: #312F2F;
+    font-family: main;
+    cursor: default;
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+body{
+    -ms-overflow-style: none;
+    scrollbar-width: 0;
+}
+button{
+    font-family: main;
+    cursor: pointer;
+}
+
+#start-box{
+    background-color: white;
+    border: #EF626C solid 0.5vh;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 70vh;
+    width: 80vw;
+    transition: 500ms;
+    z-index: 1000;
+    /* display: none; */
+}
+#start-title{
+    font-size: 6vh;
+    text-align: center;
+    margin: 5vh;
+    margin-top: 10vh;
+}
+#start-text{
+    font-size: 4vh;
+    cursor: pointer;
+    border: #EF626C solid 0.3vh;
+    width: fit-content;
+    margin: auto;
+    padding: 0.3vh;
+    text-align: center;
+    transition: 500ms;
+}
+#start-text:hover{
+    transform: scale(115%);
+}
+#start-name{
+    font-size: 2vh;
+    margin: 1vh;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#p0-box{
+    background-color: white;
+    border: #84cfdc solid 0.8vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 99%;
+    width: fit-content;
+    transition: 500ms;
+    z-index: 500;
+    opacity: 0;
+}
+#p0-bg{
+    width: 24vw;
+}
+#p0-bg-overlay{
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    background-image: linear-gradient(270deg,rgba(0, 0, 0, 0) ,rgb(0, 0, 0, 0.9));
+}
+.p0-selections{
+    color: white;
+    font-size: 3vh;
+    position: absolute;
+    cursor: pointer;
+    transition: 500ms;
+    margin: 2vh;
+    padding: 3vh;
+}
+.p0-selections:hover{
+    transform: translateX(20%);
+}
+#p0-title{
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    margin: 2vh;
+    font-size: 4vh;
+    color: white;
+}
+#p0-s1{
+    top: 10%;
+}
+#p0-s2{
+    top: 20%;
+}
+#p0-s3{
+    top: 30%;
+}
+
+#p1-box{
+    height: 120vh;
+    width: 76vw;
+    background-color: #312F2F;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: none;
+}
+#p1-title, #p2-title, #p3-title{
+    font-size: 5vh;
+    text-align: center;
+    z-index: 15;
+    position: relative;
+    color: white;
+}
+#p1-bg{
+    height: 30%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+#bg-link{
+    position: absolute;
+    color: white;
+    right: 0;
+    margin: 1vh;
+    z-index: 15;
+    font-size: 1vh;
+    top: 0;
+}
+#p1-bg-overlay{
+    height: 30%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-color: #22181cbb ;
+}
+#p1-selection1, #p1-selection2{
+    z-index: 20;
+    position: absolute;
+    border: white 0.2vh solid;
+    padding: 0.5vh;
+    background-color: transparent;
+    font-size: 3.5vh;
+    color: white;
+    top: 18%;
+    width: 15vw;
+    transition: 500ms;
+}
+#p1-selection2{
+    left: 50%;
+}
+#p1-selection1{
+    left: 30%;
+    background-color: #EF626C;
+}
+#p1-box1, #p1-box2{
+    width: 60%;
+    height: fit-content;
+    background-color: white;
+    z-index: 25;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#p1-box2{
+    display: none;
+    background-color: transparent;
+    width: 80%;
+    height: 50%;
+}
+#p1-img1{
+    width: 20%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border: #EF626C 0.4vh solid;
+    margin: 4vh;
+}
+#p1-text1{
+    margin-left: 3vh;
+    font-size: 2vh;
+    padding: 0;
+}
+.p1-text1-subtitles{
+    font-size: 3vh;
+    margin: 1vh;
+}
+#p1-img2, #p1-img3{
+    height: 40vh;
+}
+
+#p1-img2-title,#p1-img3-title{
+    color: white;
+    font-size: 3vh;
+    transition: 500ms;
+}
+#p1-img2-title:hover,#p1-img3-title:hover{
+    transform: scale(110%) translateX(5%);
+}
+
+#p1-img2-box, #p1-img3-box{
+    height: 50vh;
+    width: 40vh;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%,-50%);
+}
+#p1-img3-box{
+    left: 75%;
+}
+#henry-text, #georgia-text{
+    color: white;
+    transform: scaleY(0%);
+    transition: 500ms;
+    font-size: 2vh;
+    padding: 5vh;
+}
+
+#p2-box, #p3-box{
+    height: 100vh;
+    width: 76vw;
+    background-color: #312F2F;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: none;
+}
+#p2-img1{
+    background-color: white;
+    
+}
+#p2-box3{
+    top: 50%;
+    left: 25%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    height: 80%;
+}
+#p2-box2{
+    width: 70%;
+    height: 60%;
+    position: absolute;
+    background-color: white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border: #EF626C 1vh solid;
+    border-radius: 5px;
+}
+#p2-text-box{
+    width: 40%;
+    height: 90%;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    margin: 3vh;
+}
+#p2-text{
+    font-size: 2vh;
+    text-align: justify;
+}
+@keyframes arrow-bobble{
+    0%{
+        transform: translate(-50%,-50%);
+    }
+    50%{
+        transform: translate(-50%, -60%);
+    }
+    100%{
+        transform: translate(-50%,-50%);
+    }
+}
+#p2-arrow{
+    font-size: 5vh;
+    transform: rotate(90deg);
+    margin: 0;
+}
+#p2-arrow-box{
+    height: 20%;
+    width: 20%;
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    animation-name: arrow-bobble;
+    animation-iteration-count: infinite;
+    animation-duration: 1000ms;
+}
+#zoomImg{
+    height: 100%;
+}
+#zoomImgBox{
+    width: 30%;
+    z-index: 30;
+    margin: 5vh;
+    left: 20%;
+    transform: translate(-50%,80%);
+    position: absolute;
+    transition: 500ms;
+    opacity: 0;
+    background-color: #312F2F;
+    border: #EF626C 1vh solid;
+    border-radius: 5px;
+}
+#zoom-box-title{
+    color: white;
+    font-size: 2vh;
+    margin: 5vh;
+    margin-top: 2vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+#zoom-box-text{
+    color: white;
+    position: absolute;
+    transform: translate(50%,-50%);
+    right: 20%;
+    top: 30%;
+    margin: 2vh;
+    font-size: 1.2vh;
+}
+#p3-img-box{
+    height: 80%;
+    width: 70%;
+    margin: 4vh;
+}
+.p3-images-box{
+    height: 40%;
+    padding: 6vh;
+}
+.p3-images{
+    height: 100%;
+}
+.img-texts{
+    font-size: 2vh;
+    color: white;
+}
+#p3-text-box{
+    right: 0;
+    bottom: 0;
+    margin: 5vh;
+    position: fixed;
+    background-color: white;
+    border: #EF626C 1vh solid;
+    border-radius: 5px;
+    width: 30%;
+    height: 30%;
+}
+#p3-text{
+    font-size: 2vh;
+    margin: 1vh;
+}
+</style>
+
+<body>
+    <div id="start-box">
+        <h1 id="start-title">Appréciation d'une exposition d'arts visuels</h1>
+        <p id="start-text" onclick="start()">> Cliquez ici pour débuter</p>
+        <p id="start-name">Par Jean Lin 405</p>
+    </div>
+
+    <div id="p0-box">
+        <img id="p0-bg" src="images/IMG_2525.jpg" height="100%"></img>
+        <div id="p0-bg-overlay"></div>
+        <h1 id="p0-title">TABLE DES MATIÈRES</h1>
+        <p id="p0-s1" class="p0-selections" onclick="expo()">&#10162; L'exposition</p>
+        <p id="p0-s2" class="p0-selections" onclick="oChoix()">&#10162; L'oeuvre choisie</p>
+        <p id="p0-s3" class="p0-selections" onclick="oAutres()">&#10162; D'autres oeuvres</p>
+    </div>
+
+    <div id="p1-box">
+        <h1 id="p1-title">INFORMATIONS SUR L'EXPOSITION</h1>
+        <img src="images/mbam.jpg" alt="" id="p1-bg">
+        <a id="bg-link" href="https://www.lonelyplanet.com/canada/montreal/downtown/attractions/musee-des-beaux-arts-de-montreal/a/poi-sig/392889/1336035">lien de l'image</a>
+        <div id="p1-bg-overlay"></div>
+        <h3 id="p1-subtitle1"></h3>
+        <button id="p1-selection1" onclick="p1Selection1()">Généralités</button>
+        <button id="p1-selection2" onclick="p1Selection2()">Artistes</button>
+
+        <div id="p1-box1">
+
+            <h2 class="p1-text1-subtitles">Lieu de l'exposition:</h2> 
+            <p id="p1-text1">Musée des beaux-arts de Montréal</p> <br>
+            <h2 class="p1-text1-subtitles">Titre de l'exposition:</h2> 
+            <p id="p1-text1">Georgia O'Keeffe et Henry Moore: Géants de l'art moderne</p> <br>
+            <h2 class="p1-text1-subtitles">Date de ma visite:</h2> 
+            <p id="p1-text1">6 mars 2024</p> <br>
+            <h2 class="p1-text1-subtitles">Preuve de ma visite:</h2> 
+            <img id="p1-img1" src="images/preuve.jpg" alt="">
+
+        </div>
+
+        <div id="p1-box2">
+            <div id="p1-img2-box">
+                <img id="p1-img2" src="images/georgia-okeeffe.jpeg">
+                <h2 id="p1-img2-title" onclick="georgia()">>Georgia O'Keeffe</h2>
+                <p id="georgia-text">
+                    Née à Sun Prairie, Wisconsin, en 1887.
+                    Après sa graduation en études secondaires, Mme O'Keeffe voulait déjà devenir une artiste. Elle fait ses études à l'institut d'art de Chicago et la ligue d'étudiant en art de New York où elle apprend principalement des techniques de peinture traditionnelle. Plus tard, après ses études des idées révolutionnaires de Arthur Wesley Dow, elle réussit à établir son propre style pour mieux exprimer ses sentiments et ses idées.
+                    <br><br>
+                    Dans les années 1920, Mme O'Keeffe est reconnue comme l'une des plus grandes artistes de l'Amérique. C'est à l'été de 1929 que Georgia O'Keeffe fait sa première visite au Nouveau Mexique. Pour les deux prochaines décennies, elle passe la plupart de son temps là-bas à travailler et à vivre. C'est aussi durant cette période que les œuvres de Mme O'Keeffe prennent un nouveau tournant. 
+                    <br><br>
+                    Elle continue son parcours en voyageant à travers divers endroits, dont le Mont Fuji du Japon et les chaînes de montagnes du Pérou. À l'âge de 98, Georgia O'Keeffe meurt à Santa Fe, le 6 mars 1986.  
+                </p>
+            </div>
+            
+            <div id="p1-img3-box">
+                <img id="p1-img3" src="images/Henry_Moore.jpg">
+                <h2 id="p1-img3-title" onclick="henry()">>Henry Moore</h2>
+                <p id="henry-text"> 
+                    Né à Castleford, Yorkshire, en 1898.
+                    M. Moore voulait devenir sculpteur depuis son enfance, mais il est devenu enseignant contre son gré. Quand la première guerre mondiale a débuté, il a été enrôlé dans l'armée. En 1919, il réalise son rêve d'être un artiste. Dans les années 1920 et 1930, M. Moore parvient à devenir un sculpteur reconnu de son époque. 
+                    <br><br>
+                    En 1939, après le début de la deuxième guerre mondiale, Henry Moore a commencé sa série de dessin de personnes des abris. Cette série connaît beaucoup de succès et Moore devient alors un artiste de guerre officiel.
+                    <br><br>
+                    Après la guerre, M. Moore a continué ses sculptures. En 1948, il gagne le prix international en sculpture. Vers 1960, l'artiste est à son apogée, et il est reconnu mondialement. À l'âge de 79, en 1977, M. Moore et sa famille décident de créer la fondation Henry Moore. Après neuf années de travail pour la fondation, il meurt en août 1986.
+                    </p>
+            </div>
+            
+        </div>
+    </div>
+
+    <div id="p2-box">
+        <h1 id="p2-title">L'OEUVRE CHOISIE</h1>
+        <div id="p2-box2">
+
+            <div id="p2-box3">
+                <div id="p2-arrow-box">
+                    <p id="p2-arrow">&#10151;</p>
+                </div>
+                <img onmouseleave="imgZoomOff()" onmouseover="imgZoom()" id="p2-img1" src="images/IMG_2516.jpg" height="100%">
+            </div>
+
+            <div id="zoomImgBox" onmouseleave="imgZoomOff()" onmouseover="imgZoom()">
+                <img onmouseleave="imgZoomOff()" onmouseover="imgZoom()" id="zoomImg" src="images/zoomImg.jpg" alt="">
+                <h2 id="zoom-box-title">Informations sur l'oeuvre</h2>
+                <p id="zoom-box-text">
+                    Étude pour « Perspective d'abri dans le métro » 
+                    <br> <br>
+                    1941, Henry Moore 
+                    <br> <br>
+                    Mine de plomb, crayon de cire, crayon de couleur, <br> aquarelle, lavis, plume et encre sur papier
+                    <br> <br>
+                    Station Liverpool Street, encore en construction, <br> utilisée par Moore pour ses dessins d'abris. 
+                    <br> <br>
+                    Techniques de perspective
+                </p>
+            </div>
+            
+                <div id="p2-text-box">
+                    <p id="p2-text">En première vue de l'œuvre de Henry Moore, « Perspective d'abri dans le métro, » j'ai ressenti de la tristesse. En fait, les représentations des citoyens recroquevillées tout au long des murs du métro m'ont donné l'impression qu'elles sont très pitoyables. Les couleurs principalement grisâtres de l'œuvre ajoutent à l'effet de misère et de désespoir. Les formes plutôt vagues des citoyens représentent, pour moi, leur mentalité instable face à leur situation durant la deuxième guerre mondiale. J'éprouve beaucoup de chagrin, mais aussi de colère, à leur circonstance injuste. Je trouve que cette toile représente très bien les injustices présentes dans notre monde et leurs effets sur les personnes affectées. 
+                    </p>
+                </div>
+
+        </div>
+    </div>
+
+    <div id="p3-box">
+        <h1 id="p3-title">Autres oeuvres</h1>
+        <div id="p3-img-box">
+            <div class="p3-images-box"> 
+                <img class="p3-images" src="images/IMG_2515.jpg" alt="">
+                <h2 class="img-texts">Figures allongées: études pour sculpture | Henry Moore</h2>
+            </div>
+
+            <div class="p3-images-box"> 
+                <img class="p3-images" src="images/IMG_2518.jpg" alt="">
+                <h2 class="img-texts">Tête de bélier et belle-de-jour bleue | Georgia O'Keeffe</h2>
+            </div>
+
+            <div class="p3-images-box"> 
+                <img class="p3-images" src="images/IMG_2519.jpg" alt="">
+                <h2 class="img-texts">Arum dans un grand verre No.2 | Georgia O'Keeffe</h2>
+            </div>
+
+            <div class="p3-images-box"> 
+                <img class="p3-images" src="images/IMG_2521.jpg" alt="">
+                <h2 class="img-texts">De la rivière - pâle | Georgia O'Keeffe</h2>
+            </div>
+
+            <div class="p3-images-box"> 
+                <img class="p3-images" src="images/IMG_2523.jpg" alt="">
+                <h2 class="img-texts">Le mont Pedernal | Georgia O'Keeffe</h2>
+            </div>
+
+            <div class="p3-images-box"> 
+                <img class="p3-images" src="images/IMG_2525.jpg" alt="">
+                <h2 class="img-texts">Falaises derrière Abiquiu, cascade asséchée | Georgia O'Keeffe</h2>
+            </div>
+
+        </div>
+        <div id="p3-text-box">
+            <p id="p3-text">En général, j'ai trouvé l'exposition très différente des autres que j'ai vu auparavant. Il y avait un thème même avec des œuvres de deux artistes différents. La présence de sculptures et de toiles crée un contraste apprécié tout au long de l'exposition. De plus, les représentations des pièces de travail des deux artistes nous permettent de mieux contextualiser et comprendre leur travail. </p>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    var isSlc = 0;
+    var isP1Slc = 0;
+
+function start(){
+    document.getElementById("start-box").style.opacity="0";
+    document.getElementById("start-box").style.zIndex="-10";
+    document.getElementById("p0-box").style.opacity="1";
+}
+function expo(){
+    if(isSlc!==1){
+        document.getElementById("p1-box").style.display="block";
+        document.getElementById("p2-box").style.display="none";
+        document.getElementById("p3-box").style.display="none";
+        document.getElementById("p0-s1").style.border="white 0.3vh solid";
+        document.getElementById("p0-s2").style.border="0";
+        document.getElementById("p0-s3").style.border="0";
+        isSlc=1;
+    } else {
+
+    }
+}
+function oChoix(){
+    if(isSlc!==2){
+        document.getElementById("p2-box").style.display="block";
+        document.getElementById("p1-box").style.display="none";
+        document.getElementById("p3-box").style.display="none";
+        document.getElementById("p0-s2").style.border="white 0.3vh solid";
+        document.getElementById("p0-s3").style.border="0";
+        document.getElementById("p0-s1").style.border="0";
+        isSlc=2;
+    } else {
+
+    }
+}
+function oAutres(){
+    if(isSlc!==3){
+        document.getElementById("p3-box").style.display="block";
+        document.getElementById("p2-box").style.display="none";
+        document.getElementById("p1-box").style.display="none";
+        document.getElementById("p0-s3").style.border="white 0.3vh solid";
+        document.getElementById("p0-s2").style.border="0";
+        document.getElementById("p0-s1").style.border="0";
+        isSlc=3;
+    } else {
+        
+    }
+}
+
+function p1Selection1(){
+    if(isP1Slc==1){
+        document.getElementById("p1-box1").style.display="block";
+        document.getElementById("p1-box2").style.display="none";
+        document.getElementById("p1-selection1").style.backgroundColor="#EF626C";
+        document.getElementById("p1-selection2").style.backgroundColor="transparent";
+        isP1Slc=0;
+    } else {
+
+    }
+}
+function p1Selection2(){
+    if(isP1Slc==0){
+        document.getElementById("p1-box1").style.display="none";
+        document.getElementById("p1-box2").style.display="block";
+        document.getElementById("p1-selection2").style.backgroundColor="#EF626C";
+        document.getElementById("p1-selection1").style.backgroundColor="transparent";
+        isP1Slc=1;
+    } else {
+
+    }
+}
+function georgia(){
+    document.getElementById("georgia-text").style.transform="scaleY(100%)";
+}
+function henry(){
+    document.getElementById("henry-text").style.transform="scaleY(100%)";
+}
+function imgZoom(){
+    document.getElementById("zoomImgBox").style.opacity="1";
+    document.getElementById("zoomImgBox").style.height="70%";
+    document.getElementById("zoomImgBox").style.width="70%";
+    document.getElementById("zoomImgBox").style.transform="translate(-60%,0%)";
+
+}
+function imgZoomOff(){
+    document.getElementById("zoomImgBox").style.transform="translate(-50%,80%)";
+    document.getElementById("zoomImgBox").style.height="35%";
+    document.getElementById("zoomImgBox").style.width="35%";
+    document.getElementById("zoomImgBox").style.opacity="0";
+
+}
+
+</script>
+
+</html>
