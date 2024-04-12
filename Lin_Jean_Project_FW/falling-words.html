@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+    <img src="images/bg.gif" alt="" id="bg">
+    <div id="note-gen-box">
+    <div id="staff-box">
+        <img src="images/treble_clef.png" id="treble" height="100%" alt="">
+        <div id="staff1"></div>
+        <div id="staff2"></div>
+        <div id="staff3"></div>
+        <div id="staff4"></div>
+        <div id="staff5"></div>
+        <div id="staff-bar"></div>
+    </div>
+    </div>
+
+    <div id="start-box" onclick="gameStartFunctions()">
+        <h1 id="start-title">Click to Start</h1> 
+        <p id="start-text2">Esc button to open menu</p>
+    </div>
+
+    <div id="end-box" onclick="restart()">
+        <h1 id="end-text">
+            Game Over<br> Click to Restart
+        </h1>
+        <p id="end-point">
+            
+        </p>
+    </div>
+
+    <div id="menu-box">
+        <p id="menu-title">Menu</p>
+        
+        <p id="music-title">Music:</p>
+        <div id="music-slc">
+            <img draggable="false" class="menu-img" src="images/check_icon.png" alt="" id="music-check" onclick="toggleMusic()">
+            <img draggable="false" class="menu-img" src="images/x_icon.png" alt="" id="music-x" onclick="toggleMusic()">
+        </div>
+
+        <p id="sfx-title">SFX:</p>
+        <div id="sfx-slc">
+            <img draggable="false" class="menu-img" src="images/check_icon.png" alt="" id="sfx-check" onclick="toggleSFX()">
+            <img draggable="false" class="menu-img" src="images/x_icon.png" alt="" id="sfx-x" onclick="toggleSFX()">
+        </div>
+
+        <p id="hint-title">Hint:</p>
+        <div id="hint-slc">
+            <img draggable="false" class="menu-img" src="images/check_icon.png" alt="" id="hint-check" onclick="toggleHint()">
+            <img draggable="false" class="menu-img" src="images/x_icon.png" alt="" id="hint-x" onclick="toggleHint()">
+        </div>
+
+        <button id="restart-button" onclick="restart()">Restart</button>
+        <button id="info-button" onclick="info()">Info</button>
+
+        
+    </div>
+
+    <div id="info-box" onclick="info()">
+        <h2 id="info-title" onclick="info()"> 
+            About the game:
+        </h2>
+        <p id="info-text" onclick="info()">
+            This game is endless; your goal is to stay alive for as long as possible whilst obtaining the max number of points. <br>
+            Notes are generated on the staff; type the correct note to gain points and time. <br>
+            If a note reaches the end of the staff, time will be deducted.<br>
+            <br>>Click to close
+        </p>
+    </div>
+
+    <div id="timer-box">
+        <p id="time-text"></p>
+        <div id="timer-bar"></div>
+    </div>
+
+    <div id="point-box">
+        <p id="point-text">Points:</p>
+        <p id="point-number">0</p>
+    </div>
+
+    <input type="text" id="player-word">
+
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+*{
+    
+    user-select: none;
+}
+@font-face{
+    font-family: pixel;
+    src: url(pixel_arial_11/PIXEARG_.TTF);
+}
+@keyframes notes-slide{
+    from{
+        left: 95%;
+    }
+    to{
+        left: 12%;
+    }
+}
+@keyframes border-ambiant{
+    0%{
+        border: 0.8vh solid transparent;
+        border-image: linear-gradient(240deg, rgb(205, 109, 230), rgb(39, 92, 236));
+        border-image-slice: 1;
+    }
+    25%{
+        border: 0.8vh solid transparent;
+        border-image: linear-gradient(150deg, rgb(205, 109, 230), rgb(39, 92, 236));
+        border-image-slice: 1;
+    }
+    50%{
+        border: 0.8vh solid transparent;
+        border-image: linear-gradient(60deg, rgb(205, 109, 230), rgb(39, 92, 236));
+        border-image-slice: 1;
+    }
+    75%{
+        border: 0.8vh solid transparent;
+        border-image: linear-gradient(330deg, rgb(205, 109, 230), rgb(39, 92, 236));
+        border-image-slice: 1;
+    }
+    100%{
+        border: 0.8vh solid transparent;
+        border-image: linear-gradient(240deg, rgb(205, 109, 230), rgb(39, 92, 236));
+        border-image-slice: 1;
+    }
+}
+body{
+    font-family: pixel;
+    background: no-repeat center center fixed rgb(59, 59, 59);
+    overflow: hidden;
+    margin: 0;
+    cursor: url("https://i.imgur.com/Kd5pVCJ.png"), auto;
+    box-sizing: border-box;
+}
+button{
+    user-select: none;
+    cursor: url("https://i.imgur.com/Kd5pVCJ.png"), auto;
+}
+input{
+    user-select: none;
+    cursor: url("https://i.imgur.com/Kd5pVCJ.png"), auto;
+}
+#start-box, #end-box{
+    color: white;
+    background: black;
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1000;
+    font-size: 10em;
+    text-align: center;
+}
+#end-box{
+    display: none;
+}
+#bg{
+    background-image: no-repeat center center fixed;
+    position: absolute;
+    top: auto;
+    object-fit: cover;
+    height: 100vh;
+    width: 101vw;
+    z-index: -10;
+    pointer-events: none;
+}
+#menu-box, #info-box{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 55%;
+    left: 50%;
+    height: 65vh;
+    width: 70vw;
+    background-image: linear-gradient(250deg, rgba(255, 227, 227, 0.603), rgba(209, 233, 255, 0.603));
+    animation-name: border-ambiant;
+    animation-duration: 3000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    backdrop-filter: blur(15px);
+    display: none;
+}
+#menu-title, #info-title{
+    font-size: 3em;
+    font-weight: 1000;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 0%;
+    left: 50%;
+}
+.menu-img{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+#music-x, #sfx-x, #hint-check{
+    display: none;
+}
+#music-title, #sfx-title, #hint-title{
+    font-size: 3em;
+    left: 10%;
+    position: absolute;
+    top: 10%;
+}
+#sfx-title{
+    top: 25%;
+}
+#hint-title{
+    top: 40%;
+}
+#music-slc, #sfx-slc, #hint-slc{
+    width: 3em;
+    height: 3em;
+    background-color: rgba(240, 248, 255, 0.7);
+    position: absolute;
+    right: 10%;
+    top: 15%;
+    animation-name: border-ambiant;
+    animation-duration: 3000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+#sfx-slc{
+    top: 30%;
+}
+#hint-slc{
+    top: 45%;
+}
+#restart-button, #info-button{
+    height: fit-content;
+    width: 7em;
+    background-image: linear-gradient(280deg, rgb(205, 109, 230), rgb(39, 92, 236));
+    border: aliceblue 0.2em solid;
+    border-radius: 0.5em;
+    box-shadow: 5em;
+    transition: 400ms;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    top: 80%;
+    left: 30%;
+    font-size: 3em;
+    padding: 0.3em;
+    color: aliceblue;
+    font-family: pixel;
+}
+#info-button{
+    left: 70%;
+}
+#info-button:hover, #restart-button:hover{
+    filter: brightness(140%);
+    transform: translate(-50%,-60%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0em 0.2em 6px;
+}
+#timer-box{
+    z-index: 5;
+    backdrop-filter: blur(5px);
+    border: #C6C8EE 0.5vh solid;
+    height: 6vh;
+    border-radius: 1vh;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 4.5%;
+    left: 50%;  
+    padding: 1vh;
+}
+#timer-bar{
+    height: 2vh;
+    width: 20vw;
+    background-image: linear-gradient(280deg, #C6C8EE, white );
+    border-radius: 0.5em;
+    transition: 600ms;
+}
+#timer-text{
+    color: white;
+    font-size: 2vh;
+    margin: 0;
+}
+#point-box{
+    z-index: 5;
+    backdrop-filter: blur(5px);
+    border: #C6C8EE 0.5vh solid;
+    height: 6vh;
+    width: fit-content;
+    border-radius: 1vh;
+    float: right;
+    padding: 1vh;
+}
+#point-text, #point-number{
+    color: white;
+    font-size: 2vh;
+    margin: 0;
+    text-align: center;
+}
+#staff-box{
+    height: 40vh;
+    width: 70vw;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 70%;
+    left: 50%;    
+}
+#treble{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 60%;
+    left: 5%;
+    width: 25vh;
+    height: 25vh;
+    filter: invert(1);
+    z-index: 2;
+    pointer-events: none;
+}
+#staff1, #staff2, #staff3, #staff4, #staff5{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 20%;
+    left: 50%;
+    height: 1.25%;
+    width: 100%;
+    background-color: white;
+}
+#staff2{
+    top: 35%;
+}
+#staff3{
+    top: 50%;
+}
+#staff4{
+    top: 65%;
+}
+#staff5{
+    top: 80%;
+}
+#staff-bar{
+    background-color: white;
+    height: 85%;
+    width: 0.3vw;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 11%;
+    box-shadow: white -0.6vw 0px;
+}
+.notes{
+    position: absolute;
+    transform: translate(-50%, -52%);
+    left: 90%;
+    animation-name: notes-slide;
+    animation-timing-function: linear;
+}
+.notes-text{
+    display: none;
+}
+
+.realImage{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    filter: invert(1);
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+#player-word{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    bottom: 3%;
+    left: 50%;
+    width: 25vw;
+    height: 6vh;
+    text-align: center ;
+    font-family: pixel;
+    font-size: 2vw;
+    background: 0;    
+    border: 0;
+    color: white;
+    border-bottom: 0.2vh white solid;
+    outline: none;
+}
+#start-text2{
+    font-size: 0.5em;
+    color: white;
+}
+#start-title{
+    font-size: 1em;
+    text-align: center;
+    margin: 0;
+    color: white;
+}
+#info-text{
+    font-size: 1.5em;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    text-align: center;
+}
+#end-text{
+    font-size: 10vh;
+    text-align: center;
+    color: white;
+}
